@@ -190,17 +190,17 @@
               
                 const data = [...document.querySelectorAll('[data-time]')]; // Get all the data-time attribute and put them in an array
 
-                const minSecData = data.map(a=>[min, sec]=a.dataset.time.split(':')).map(a=>{return [Number(a[0]),Number(a[1])]}); // turn the strings into numbers
+                const minSecData = data.map(element => [min, sec] = element.dataset.time.split(':')).map(element => {return [Number(element[0]),Number(element[1])]}); // turn the strings into numbers
                 
-                const minutesAccumInSec = (minSecData.map(a=>a[0]).reduce((total,current)=>total+current))*60; // turn the minutes into seconds
+                const minutesAccumInSec = (minSecData.map(element=>element[0]).reduce((total, current) => total + current)) * 60; // turn the minutes into seconds
                 
-                const secondsAccumTotal = (minSecData.map(a=>a[1]).reduce((total,current)=>total+current))+minutesAccumInSec; // Total amount in seconds
+                const secondsAccumTotal = (minSecData.map(element=>element[1]).reduce((total, current) => total + current)) + minutesAccumInSec; // Total amount in seconds
                 
-                const hours = Math.floor(secondsAccumTotal/3600);
+                const hours = Math.floor(secondsAccumTotal / 3600);
                 
-                const minutes = Math.floor((secondsAccumTotal%3600)/60);
+                const minutes = Math.floor((secondsAccumTotal % 3600) / 60);
                 
-                const seconds = secondsAccumTotal%3600%60;
+                const seconds = secondsAccumTotal % 3600 % 60;
                 
                 console.log(hours, minutes, seconds);
 
